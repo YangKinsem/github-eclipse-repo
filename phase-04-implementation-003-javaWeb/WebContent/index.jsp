@@ -1,68 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <style>
-.background{
+.background1 {
 	background-image: url(/static/imgs/pic008.jpg);
 	background-color: #000000;
+	background-size: 100%
 }
 </style>
 <script>
-	function run(clickedObj){
-		$("#firstline").fadeOut('slow');
+	function run(clickedObj) {
+		$("#firstline").fadeOut(3000);
 		$('#intr')[0].pause();
-		$('#poem')[0].play();
 		$('#poem-txt').fadeIn('slow');
+		$('#poem-txt').animate({
+			opacity : '1',
+			left:'1024px',
+			top:'700px'
+		},10000)
 		$(clickedObj).animate({
-			width : '10px',
-			opacity : '0.2',
-			left : '1800px',
-			top : '100px'
-		}, 12000);
-		//$('#waiting')[0].play();
+			width : '250px',
+			opacity : '0.3',
+			right : '2000px',
+			top : '150px'
+		}, 24000);
 		$("#moviebox").show('slow');
 		$("#movie")[0].play();
 	}
 	function onVideoEnd(){
+		
 		$("#moviebox").fadeOut('slow');
+		
 		$('#poem-txt').animate({
-			center,
+			bottom : '100px',
 			right : '100px'
 		}, 18000);
 		
 		$('#waiting')[0].play();
 	}
 </script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>The Wandering Earth</title>
 <script src="/static/jquery.min.js"></script>
 </head>
-<body class = "background">
-	<audio id="intr" controls="controls" src="/static/audio/wanderingEarch-poem.mp3"></audio>
-	<audio id="poem" src="/static/audio/wanderingEarch-poem.mp3" preload="auto"></audio>
-	<span id="firstline" style="font-size: 26px; color: white">大家好，我准备设计和
-		实现一个“<span style="font-size: 38px; color: red">流浪地球</span>”的漂亮网页！ 
-		欢迎大家观赏,谢谢！
+<body class="background1">
+	<audio id="intr" controls="controls"
+		src="/static/audio/introduction.mp3" autoplay="autoplay"></audio>
+	<audio id="poem" src="/static/audio/wanderingEarch-poem.mp3"
+		preload="auto"></audio>
+	<span id="firstline" style="font-size: 20px; color: white">大家好，我准备设计和实现一个“<span
+		style="font-size: 38px; color: red">流浪地球</span>”的漂亮网页！ 欢迎大家观赏,谢谢！
 	</span>
-	<audio id="waiting" src="/static/audio/waiting.mp3" preload="auto"></audio>
+	<audio id="waiting" src="/static/audio/fire.mp3" preload="auto"></audio>
 	<div id="poem-txt"
-		style="display: none; font-size: 22px; color: orange; position:absolute;
-		left :10px;top:50px" >
-		《诗词版"流浪地球"》<br /> <span style="font-size: 18px; color: grey">
-			-郭鹏 </span><br /><br />
-			西风吹皱东方河，万年地球白发多。 <br />
-			流浪星际家何去，满船清梦出银河。
+		style="display: none; font-size: 22px; color: #E65100; position:absolute; left :10px;top:50px ; opacity :0.4" >
+		《诗词版"流浪地球"》<br /> <span style="font-size: 18px; color: #B71C1C">
+			-郭鹏 </span><br /> <br /> 西风吹皱东方河，万年地球白发多。 <br /> 流浪星际家何去，满船清梦出银河。
 	</div>
 	<img src="/static/imgs/earth.png"
-		style="position: absolute; left: 10px; bottom: 10px; width: 200px" 
+		style="position: absolute; right: 10px; top : 100px; width : 100px"
 		onclick="run(this);return false" />
 	<div id="moviebox" style="margin-top: 100px; display: none"
 		align="center">
 		<video id="movie" height="500px" controls="controls"
-			src="http://vd.yinyuetai.com/sh.yinyuetai.com/uploads/videos/common/74B70168929FF3BC930BAD3647882B83.mp4"
-			onended="onVideoEnd();" />
+			src="https://gss3.baidu.com/6LZ0ej3k1Qd3ote6lo7D0j9wehsv/tieba-smallvideo-transcode/61990981_fd6360c7b3d2674e0b0937c34a4c1b1b_0.mp4" onended="onVideoEnd();" >
+		</video>
 	</div>
 </body>
 </html>
